@@ -1,16 +1,31 @@
 let boxContainer = document.querySelector('.box-container');
-
+// let randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
 let arr = [];
  for(let i=0;i<500 ; i++){
      arr.push(i);      
  };
 
+ function randomNumber( max) {
+    return Math.floor(Math.random() * (max));
+  }
 
  arr.forEach((elem)=>{
     let box  = document.createElement('div');
     box.classList.add('box');
     boxContainer.append(box);
+    let h3 = document.createElement('h3');
+    h3.innerText=randomNumber(500);
+    box.append(h3);
  });
+ 
+function changeColor(){
+    let allBoxes = document.querySelectorAll('.box');
+    allBoxes.forEach(discobox=>{
+        discobox.style.backgroundColor = colorGenerator();
+        // box.firstElementChild.innerText = randomNumber();
+        discobox.querySelector('h3').innerText =randomNumber(500);
+    })
+}
  
 
  function colorGenerator(){
@@ -23,13 +38,7 @@ let arr = [];
      return color;
  };
 
-let newbox = document.querySelector('.box1');
-
-document.querySelector('.box-container').addEventListener('mousemove', (e)=>{
-   let randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-   e.target.style.backgroundColor= randomColor;
-   
-});
+document.querySelector('.box-container').addEventListener('mousemove', changeColor);
 
 
 
