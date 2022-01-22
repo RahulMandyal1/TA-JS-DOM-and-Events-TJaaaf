@@ -3,7 +3,9 @@ let allboxes = document.querySelectorAll('.boxNormal');
 
 function handleEvent(addNumber){
     addNumber.firstChild.style.display ="inline";
-
+    setTimeout(() => {
+        addNumber.firstChild.style.display ="none";
+    }, 5000);
 }
 
 allboxes.forEach((box,index)=>{
@@ -14,6 +16,7 @@ allboxes.forEach((box,index)=>{
     box.addEventListener("click",function(){
         handleEvent(box);
     })
+
 })
 
 // Flip using the delegation
@@ -33,7 +36,9 @@ root.addEventListener("click" ,delegatedEvents)
 function delegatedEvents(event){
      let clickedBox = event.target.firstChild;
      clickedBox.style.display="inline";
-     
+     setTimeout(() => {
+        clickedBox.style.display="none";
+    }, 5000);
 }
 // using the Event delegation 
 
