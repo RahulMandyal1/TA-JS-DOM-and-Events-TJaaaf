@@ -1,0 +1,101 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Poppins',sans-serif;
+}
+:root{
+    --shadow: 25px 25px 50px rgba(0,0,0,0.1),
+    10px 10px 70px rgba(0,0,0,0.1),
+    inset -5px -5px 15px rgba(-0,-0,0,0.5),
+    inset 5px 5px 15px rgba(0,0,0,0.1);
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+button{
+    border: none;
+    border-radius: 8px;
+}
+h1{
+    text-align: center;
+    margin: -10px 0 10px 0;
+}
+.container{
+    background-color: #F2F4F8; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+.container #calculator-screen{
+    height: 100px;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    box-shadow: var(--shadow);
+
+}
+.operation-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+   
+}
+.operation-container .operation{
+    width: 20%;
+    background-color:#700133 ;
+    color: #fff;
+    border: none;
+    margin: 20px 0 0 0;
+}
+
+.operation  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.operand-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 ;
+}
+.operand-container{
+    width: 74%;
+    display: flex;
+    flex-flow:row wrap ;
+    justify-content: space-between;
+
+}
+.operand{
+    flex:  0 0 30%;
+    background-color: #CFCFCF;
+    margin: 0 0 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.equalto-container{
+    width: 20%;
+    background-color: #018080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+.equalto{
+    background-color: transparent;
+    color: #fff;
+}
+.clear{
+    background-color: #3D1B10;
+    color: #fff;
+}
