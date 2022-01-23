@@ -1,14 +1,15 @@
 const form = document.querySelector('form');
 const submitButton = document.querySelector('#submit');
+const modalwrapper = document.querySelector('.modal-wrapper');
 const dataModal = document.querySelector('.modal-container');
-
+// to  hide the modal  when   the  button clicked 
+const closeModal = document.querySelector('.close-btn');
 // Hide the Modal so we can not see it while filling the form 
 
 userInfo ={};
 
-dataModal.style.display ="none";
 
-function handleEvent(event){
+form.addEventListener('submit',(event)=>{
     event.preventDefault();
     userInfo.name = form.elements.name.value;
     userInfo.email = form.elements.email.value;
@@ -17,27 +18,26 @@ function handleEvent(event){
     userInfo.userRating  = form.elements.range.value;
     userInfo.consent = form.elements.terms.checked;
     userInfo.bookGenre  = form.elements.drone.value;
-    // console.log(userInfo);
-}
-form.addEventListener('submit',handleEvent);
+});
 
+//show modal 
+submitButton.addEventListener('click',function(){
+    modalwrapper.style.display="inline-block";
+});
 
-// Making the modals
+//hide  the modal when  the  close button clicked
+closeModal.addEventListener('click',function(){
+    modalwrapper.style.display='none';
+})
 
-
-
-console.log(userInfo);
-function showModal(event){
-    console.log(` this is printed by the modal  if it has access  to ${userInfo}`);
-    // form.style.display = "none";
-    dataModal.style.display ="inline-block";
-    dataModal.classList.add('container');
-    document.querySelector('.modalName').innerText =userInfo.name;
-    document.querySelector('.modalEmail').innerText =userInfo.email;
-    document.querySelector('.modalChoices').innerText =userInfo.entertainmentMode;
-    document.querySelector('.modalColor').innerText =userInfo.color;
-    document.querySelector('.modalrating').innerText =userInfo.userRating;
-    document.querySelector('.modalbookgenre').innerText =userInfo.bookGenre;
+function showModal(obj ={}){
+    console.log(userInfo);
+    document.querySelector('.modalName').innerText =obj.name;
+    document.querySelector('.modalEmail').innerText =obj.email;
+    document.querySelector('.modalChoices').innerText =obj.entertainmentMode;
+    document.querySelector('.modalColor').innerText =obj.color;
+    document.querySelector('.modalrating').innerText =obj.userRating;
+    document.querySelector('.modalbookgenre').innerText =obj.bookGenre;
     // document.querySelector('.consent');
-}
-submitButton.addEventListener('click',showModal);
+};
+showModal(userInfo);
