@@ -4,8 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper and Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
   <body>
-    <script src="./script.js"></script>
+    
+    <section id="rps-container">
+      <div class="rps-wrapper">
+        <h1>Rock Paper Scissors Game 🤓</h1>
+            <div class="user">
+              <div class="user-win-count">0</div>
+              <h2>user<span class="seprator">--<span><span class="userdesiredInput"></span></h2>
+              <i class="fas fa-hand-rock useri" data-rps ="rock"></i>
+              <i class="fas fa-hand-scissors useri"  data-rps ="paper"></i>
+              <i class="fas fa-hand-scissors useri" data-rps ="scissor"></i>
+            </div>
+            <div class="computer">
+              <div class="computer-win-count">0</div>
+              <h2>Computer<span class="seprator">--<span><span class="autogenratedInput"></span></h2>
+              <i class="fas fa-hand-rock " data-rps ="rock"></i>
+              <i class="fas fa-hand-scissors "  data-rps ="paper"></i>
+              <i class="fas fa-hand-scissors " data-rps ="scissor"></i>
+            </div>
+            <div class="who-wins-container">
+              <h2 class="whowins"> ----!</h2>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
   </body>
 </html>
