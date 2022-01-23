@@ -1,0 +1,94 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+i{
+    font-size: 3.5rem;
+    color: #00454c;
+    margin: 10px;
+}
+
+html{
+    font-size: 62.5%;
+}
+body{
+    font-family: 'Poppins',sans-serif;
+    font-size:1.7rem;
+   
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #F5F5F5;
+
+}
+.rps-wrapper{
+    width:500px;
+    height: 500px;
+    background-color: #fff;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.25),
+    10px 10px 70px rgba(0,0,0,0.25);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column wrap;
+   
+}
+h1{
+    text-align: center;
+    background-color: #0079c1;
+    font-size: 3rem;
+    color: #f2f2f2;
+    padding: 2rem 0 ;
+    border-radius: 2rem 2rem 0 0 ;
+    width: 100%;
+}
+.seprator{
+    color: #0079c1;
+}
+.user{
+    padding: 0 5rem ;
+    position: relative;
+}
+.computer{
+    padding: 0 5rem;
+    position: relative;
+}
+.who-wins-container h2{
+    text-align: center;
+    margin: 0 0 3rem 0 ;
+}
+.user-win-count{
+    position:absolute ;
+    top: 0;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: #0079c1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.computer-win-count{
+    position:absolute ;
+    top: 0;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: #0079c1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 2rem;
+}
