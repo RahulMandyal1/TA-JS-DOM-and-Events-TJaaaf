@@ -13,11 +13,22 @@ form.addEventListener('submit',(event)=>{
     event.preventDefault();
     userInfo.name = form.elements.name.value;
     userInfo.email = form.elements.email.value;
-    userInfo.entertainmentMode = form.elements.entertainment.value;
+    userInfo.entertainment = form.elements.entertainment.value;
     userInfo.color  = form.elements.color.value;
     userInfo.userRating  = form.elements.range.value;
     userInfo.consent = form.elements.terms.checked;
     userInfo.bookGenre  = form.elements.drone.value;
+
+    //modal data    
+    document.querySelector('.modalrating').innerText =userInfo.userRating;
+    document.querySelector('.modalName').innerText =userInfo.name;
+    document.querySelector('.modalEmail').innerText =userInfo.email;
+    let termsAndcondition =userInfo.consent== true ? 'accepted' : 'do not accepted'; 
+    document.querySelector('.consent').innerText =termsAndcondition;
+    let choice = userInfo.entertainment;
+    document.querySelector('.modalChoices').innerText = choice;
+    document.querySelector('.modalColor').innerText =userInfo.color;
+    document.querySelector('.modalbookgenre').innerText =userInfo.bookGenre;
 });
 
 //show modal 
@@ -30,14 +41,3 @@ closeModal.addEventListener('click',function(){
     modalwrapper.style.display='none';
 })
 
-function showModal(obj ={}){
-    console.log(userInfo);
-    document.querySelector('.modalName').innerText =obj.name;
-    document.querySelector('.modalEmail').innerText =obj.email;
-    document.querySelector('.modalChoices').innerText =obj.entertainmentMode;
-    document.querySelector('.modalColor').innerText =obj.color;
-    document.querySelector('.modalrating').innerText =obj.userRating;
-    document.querySelector('.modalbookgenre').innerText =obj.bookGenre;
-    // document.querySelector('.consent');
-};
-showModal(userInfo);
