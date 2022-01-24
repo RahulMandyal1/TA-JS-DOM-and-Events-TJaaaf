@@ -1,0 +1,21 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    font-family: 'Poppins',sans-serif;
+}
+section{
+    min-height:100vh;
+    background-color: #C19C63;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper{
+    background-color: #789AB9;
+}
