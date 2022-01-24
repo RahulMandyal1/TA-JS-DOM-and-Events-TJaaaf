@@ -19,3 +19,8 @@ section{
 .wrapper{
     background-color: #789AB9;
 }
+li{
+    display: flex;
+    margin: 1.5rem 0 ;
+    list-style: none;
+}
