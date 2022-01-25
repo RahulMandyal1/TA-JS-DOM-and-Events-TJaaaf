@@ -1,10 +1,11 @@
 function main(){
-let root = document.querySelector('ul');
+let rootEle = document.querySelector('ul');
 let userInput= document.querySelector('.userinput');
-let activeTodo = document.querySelector('.active-todo');
-let allTodos = document.querySelector('.all-todo');
-let compltedTodos = document.querySelector('.completed-todo');
-
+let active = document.querySelector('.active-todo');
+let all = document.querySelector('.all-todo');
+let completed = document.querySelector('.completed-todo');
+let clear = document.querySelector('.clear-completed');
+let activeButton = "all";
 let alltodos = JSON.parse(localStorage.getItem('todos')) || [];
 
 function deleteTodo(e , parentEle){
@@ -15,7 +16,7 @@ function deleteTodo(e , parentEle){
         'todos',
         JSON.stringify(alltodos)
     );
-   return createUi(alltodos,root);
+   return createUi();
 }
 
 function updateIsDone(e, todoText){
@@ -33,7 +34,7 @@ function updateIsDone(e, todoText){
     }
 };
 
-function createUi(data,rootEle){
+function createUi(data =alltodos){
     rootEle.innerText = "";
     data.forEach((todo , index)=>{
         // Creating the structure for the  user todo 
@@ -63,106 +64,50 @@ function createUi(data,rootEle){
     return rootEle;
 };
 // all todos 
-allTodos.addEventListener('click',function(){
-    createUi(alltodos,root);
-})
-
-
-
-// ui  of  the  active   button or all the  active  todos 
-function activetodoUi(data,rootEle){
-         rootEle.innerText = "";
-         data.filter((todo,index)=>{
-            let li = document.createElement('li');
-            let input = document.createElement('input');
-            input.type = "checkbox";
-            let p= document.createElement('p');
-            let span = document.createElement('span');
-            let error = document.createElement('p');
-            if(todo.isDone  === false){
-                span.innerHTML = ` <i class="fas fa-window-close close-btn"></i>`;
-                li.append( input,p,span );
-                rootEle.append(li);
-
-                p.innerText = todo.name;
-                input.setAttribute("data-id" ,index);
-                span.setAttribute("data-id" , index);     
-               // input checkbox gets checked when  the user dynamically 
-               // click the  checkbox and it also  get updated in the array 
-                input.addEventListener("change",function(){
-                    updateIsDone(event, p )
-                });
-                   // Onclick the btn todo gets delete 
-                span.addEventListener("click",function(){
-                   deleteTodo( event ,span);
-                });
-               
-            }
-            else{
-                // li.append(error);
-                error.innerText = "No Active Todo for Today";
-            }
-
-        });
-    return rootEle;
-};
-
-
-function handleActivetodo(event){
-    console.log(event.target);
-    activetodoUi(alltodos,root);
-
-}
-
-activeTodo.addEventListener('click',handleActivetodo);
+all.addEventListener('click',()=>{
+    activeButton = "all";
+    updateBtn();
+    createUi();
+});
 
 // Active  todos  Ends here 
+active.addEventListener('click',()=>{
+    let activeTodos = alltodos.filter((todo)=> !todo.isDone);
+    activeButton = "active";
+    updateBtn();
+    createUi(activeTodos);
+});
 
-//Completed Todos starts here 
-function completedTodoUi(data,rootEle){
-    rootEle.innerText = "";
-    data.filter((todo,index)=>{
-        let li = document.createElement('li');
-        let input = document.createElement('input');
-        input.type = "checkbox";
-        let p= document.createElement('p');
-        let span = document.createElement('span');
-        let error = document.createElement('p');
-       if(todo.isDone  === true){
-           span.innerHTML = ` <i class="fas fa-window-close close-btn"></i>`;
-           li.append( input,p,span );
-           rootEle.append(li);
+// Active  todos  Ends here 
+completed.addEventListener('click',()=>{
+     let completedTodos  = alltodos.filter((todo)=> todo.isDone);
+    activeButton = "completed";
+    updateBtn();
+    createUi( completedTodos );
+});
+// clear completed 
+clear.addEventListener('click',()=>{
+    addtodos  = alltodos.filter((todo)=> !todo.isDone);
+    activeButton = "clear";
+    updateBtn();
+    createUi();
+});
 
-           p.innerText = todo.name;
-           input.setAttribute("data-id" ,index);
-           span.setAttribute("data-id" , index);     
-          // input checkbox gets checked when  the user dynamically 
-          // click the  checkbox and it also  get updated in the array 
-           input.addEventListener("change",function(){
-               updateIsDone(event, p )
-           });
-              // Onclick the btn todo gets delete 
-           span.addEventListener("click",function(){
-              deleteTodo( event ,span);
-           });
-          
-       }
-       else{
-           // li.append(error);
-           error.innerText = "No Active Todo for Today";
-       }
-
-   });
-return rootEle;
-};
-function handleCompletedtodo(event){
-    
-    console.log(event.target);
-    completedTodoUi(alltodos,root);
+//active button 
+function updateBtn(){
+    all.classList.remove("selected");
+    active.classList.remove("selected");
+    completed.active.classList.remove("selected");
+    if(btn === "all"){
+        all.classList.add("selected");
+    }
+   if(btn === "active"){
+        active.classList.add("selected");
+    }
+   if(btn === "completed"){
+        completed.active.classList.add("selected");
+    }
 }
-compltedTodos.addEventListener('click',handleCompletedtodo);
-//Completed Todos  ends here 
-
 function handleEvent(event){
     let value = event.target.value;
     if(event.keyCode === 13 && event.target.value!==""){
@@ -173,7 +118,7 @@ function handleEvent(event){
             }
         );
         event.target.value= "";
-        createUi(alltodos,root);
+        createUi();
     }
 
     localStorage.setItem(
@@ -181,7 +126,7 @@ function handleEvent(event){
     JSON.stringify(alltodos)
     );
 }
-createUi(alltodos,root);
+createUi();
 userInput.addEventListener('keyup',handleEvent);
 
 };
