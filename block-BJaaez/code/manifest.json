@@ -1,0 +1,9 @@
+{
+    "name": "Todo application",
+    "description": " A Todo application to  remember you what to do !",
+    "version": "1.0",
+    "manifest_version": 3,
+    "chrome_url_overrides":{
+        "newtab":"index.html"
+    }
+  }
