@@ -1,0 +1,9 @@
+{
+    "name" : "Linux Command Cheatsheet",
+    "description" : "Learn all the Linux commands ",
+    "version" : "1.0",
+    "manifest_version": 3,
+    "chrome_url_overrides":{
+        "newtab":"index.html"
+    }  
+}
